@@ -3,4 +3,7 @@ module MoviesHelper
   def oddness(count)
     count.odd? ?  "odd" :  "even"
   end
+  def order_path(item)
+    movies_path+"/order/#{item}"
+  end
 end
