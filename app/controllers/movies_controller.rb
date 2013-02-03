@@ -12,8 +12,19 @@ class MoviesController < ApplicationController
   # item in database is :  :title, :rating, :description， :release_date
   end  
   
+      
+
   def index
-    @movies = Movie.all
+    @all_ratings = Movie.get_ratings
+    if params.has_key? :ratings
+      @chosen_rating = params['ratings'].keys
+    else
+      @chosen_rating = @all_ratings
+    end
+    
+    #@movies = Movie.where(:rating=>'')
+    @movies = Movie.find(:all, :conditions=>{:rating=>(@chosen_rating)})
+          
   end
 
   def new
