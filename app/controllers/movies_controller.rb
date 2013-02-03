@@ -1,5 +1,7 @@
 class MoviesController < ApplicationController
-  before_filter :record_choice
+  
+  include MoviesHelper
+  
   def show
     id = params[:id] # retrieve movie ID from URI route
     @movie = Movie.find(id) # look up movie by unique ID
@@ -12,7 +14,6 @@ class MoviesController < ApplicationController
   # item in database is :  :title, :rating, :description， :release_date
   # end  
   
-  include MoviesHelper
 
   def index
     if session[:ratings].present?&& params[:item].nil?
@@ -33,7 +34,13 @@ class MoviesController < ApplicationController
     else
         @movies = Movie.find(:all, :conditions=>{:rating=>@chosen_rating})
     end
-    #    session[:ratings] = params[:ratings]
+    
+    if params[:item].present?
+       session[:item] = params[:item]
+    end
+    
+    session[:ratings] = params[:ratings]
+    
   end
 
   def new
