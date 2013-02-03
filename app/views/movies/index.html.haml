@@ -7,13 +7,13 @@
     Include:
     - @all_ratings.each do |rating|
       = rating
-      = check_box_tag("ratings[#{rating}]",'1', :checked=>false)#:checked=>(@chosen_rating.include?rating)#:id=>"ratings_#{rating}"
-    = submit_tag 'Refresh', :id=>"ratings_submit"
+      = check_box_tag "ratings[#{rating}]",rating,@chosen_rating.include?(rating)
+    = submit_tag 'Refresh' , :id=>"ratings_submit"
   %thead
     %tr
-      %th{:class=>('hilite' if @item == 'title')}= link_to " Movie Title", :item=>'title', :id=>'title_header'     
+      %th{:id=>'title_header',:class=>('hilite' if @item == 'title')}= link_to " Movie Title", :item=>'title'     
       %th= link_to "Rating",:item=>'rating'
-      %th{:class=>('hilite'if @item == 'release_date')}= link_to "Release Date",:item=>'release_date', :id => 'release_date_header'
+      %th{:id=>'release_date_header', :class=>('hilite'if @item == 'release_date')}= link_to "Release Date",:item=>'release_date'
       %th More Info
   %tbody
     - @movies.each do |movie|

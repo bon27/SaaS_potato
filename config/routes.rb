@@ -1,5 +1,5 @@
 Rottenpotatoes::Application.routes.draw do
-  match 'movies/order/:item' => 'movies#index'
+  match 'movies/:item' => 'movies#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
