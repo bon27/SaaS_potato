@@ -6,11 +6,11 @@ class MoviesController < ApplicationController
     # will render app/views/movies/show.<extension> by default
   end
   
-  def order
-    @item = params[:item]
-    @movies = Movie.find(:all,:order=>@item)
+  #def order
+  #  @item = params[:item]
+  #  @movies = Movie.find(:all,:order=>@item)
   # item in database is :  :title, :rating, :description， :release_date
-  end  
+  # end  
   
       
 
@@ -22,8 +22,9 @@ class MoviesController < ApplicationController
       @chosen_rating = @all_ratings
     end
     
+    @item = params[:item]
     #@movies = Movie.where(:rating=>'')
-    @movies = Movie.find(:all, :conditions=>{:rating=>(@chosen_rating)})
+    @movies = Movie.find(:all, :conditions=>{:rating=>(@chosen_rating)},:order=>@item)
           
   end
 
