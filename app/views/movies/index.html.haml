@@ -11,9 +11,9 @@
     = submit_tag 'Refresh' , :id=>"ratings_submit"
   %thead
     %tr
-      %th{:id=>'title_header',:class=>('hilite' if @item == 'title')}= link_to " Movie Title", :item=>'title'     
-      %th= link_to "Rating",:item=>'rating'
-      %th{:id=>'release_date_header', :class=>('hilite'if @item == 'release_date')}= link_to "Release Date",:item=>'release_date'
+      %th{:id=>'title_header',:class=>('hilite' if @item == 'title')}= link_to " Movie Title", order_path('title', @chosen_rating)   
+      %th= link_to "Rating", order_path('rating',@chosen_rating)
+      %th{:id=>'release_date_header', :class=>('hilite'if @item == 'release_date')}= link_to "Release Date", order_path('release_date', @chosen_rating)
       %th More Info
   %tbody
     - @movies.each do |movie|

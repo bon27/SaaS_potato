@@ -24,8 +24,12 @@ class MoviesController < ApplicationController
     
     @item = params[:item]
     #@movies = Movie.where(:rating=>'')
-    @movies = Movie.find(:all, :conditions=>{:rating=>(@chosen_rating)},:order=>@item)
-          
+    if @item
+	@movies = Movie.find(:all, :conditions=>{:rating=>@chosen_rating},:order=>@item)
+    else
+        @movies = Movie.find(:all, :conditions=>{:rating=>@chosen_rating})
+    end
+    @record_ratings = params[:ratings]
   end
 
   def new
