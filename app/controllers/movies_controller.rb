@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-
+  before_filter :record_choice
   def show
     id = params[:id] # retrieve movie ID from URI route
     @movie = Movie.find(id) # look up movie by unique ID
@@ -12,9 +12,13 @@ class MoviesController < ApplicationController
   # item in database is :  :title, :rating, :description， :release_date
   # end  
   
-      
+  include MoviesHelper
 
   def index
+    if session[:ratings].present?&& params[:item].nil?
+    redirect_to order_path(params[:item],session[:ratings].keys) and return
+    end
+ 
     @all_ratings = Movie.get_ratings
     if params.has_key? :ratings
       @chosen_rating = params['ratings'].keys
@@ -29,7 +33,7 @@ class MoviesController < ApplicationController
     else
         @movies = Movie.find(:all, :conditions=>{:rating=>@chosen_rating})
     end
-    @record_ratings = params[:ratings]
+    #    session[:ratings] = params[:ratings]
   end
 
   def new
@@ -59,5 +63,9 @@ class MoviesController < ApplicationController
     flash[:notice] = "Movie '#{@movie.title}' deleted."
     redirect_to movies_path
   end
-
+  
+  def record_choice
+     @choice = session[:item]
+     pp @choice
+  end
 end
