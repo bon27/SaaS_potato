@@ -19,12 +19,12 @@ class MoviesController < ApplicationController
     if params[:ratings].nil?&&params[:item].nil?
        redirect_to movies_path(:item=>session[:item],:ratings=>session[:ratings]) and return
     end
-    #if params[:ratings].present? && params[:item].nil?
-    #   session[:ratings] = params[:ratings]
-    #   session[:item] = params[:item]
+    if params[:ratings].present? && params[:item].nil?
+       session[:ratings] = params[:ratings]
+       session[:item] = params[:item]
     # redirect_to movies_path(:ratings=>session[:ratings]) and return
     #   redirect_to movies_path(:item=>session[:item]) and return
-    #    end
+    end
  
     @all_ratings = Movie.get_ratings
     if params.has_key? :ratings
