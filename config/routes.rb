@@ -1,10 +1,10 @@
 Rottenpotatoes::Application.routes.draw do
-  match 'movies?(item=:item&)ratings[i]=i'=>'movies#index' 
+  match 'movies?item=:item&ratings[i]=i'=>'movies#index' 
   match 'movies?ratings[i]=i'=>'movies#index'
   #match 'movies/:item' => 'movies#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
-
+  
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
