@@ -8,7 +8,7 @@
     - @all_ratings.each do |rating|
       = rating
       = check_box_tag "ratings[#{rating}]",rating,@chosen_rating.include?(rating)
-    = submit_tag 'Refresh' , :id=>"ratings_submit"
+    = submit_tag 'Refresh' , :controller=>'Movie',:action=>'index',:id=>"ratings_submit"
   %thead
     %tr
       %th{:id=>'title_header',:class=>('hilite' if @item == 'title')}= link_to " Movie Title", order_path('title', @chosen_rating)   
