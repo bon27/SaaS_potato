@@ -16,9 +16,12 @@ class MoviesController < ApplicationController
   
 
   def index
-    if session[:ratings].present?&& params[:item].nil?
-    redirect_to order_path(params[:item],session[:ratings].keys) and return
+    if params[:ratings].nil?&&params[:item].nil?&&session[:ratings].present?&&session[:item].present?
+       redirect_to movies_path(:item=>session[:item],:ratings=>session[:ratings]) and return
+    #if params[:item].present? #&& params[:ratings].nil?
     end
+    #   redirect_to movies_path(:item=>session[:item]) and return
+    #    end
  
     @all_ratings = Movie.get_ratings
     if params.has_key? :ratings
@@ -35,13 +38,13 @@ class MoviesController < ApplicationController
         @movies = Movie.find(:all, :conditions=>{:rating=>@chosen_rating})
     end
     
-    if params[:item].present?
+    if params[:item]
        session[:item] = params[:item]
     end
-    
-    session[:ratings] = params[:ratings]
-    
-  end
+    if params[:ratings]
+       session[:ratings] = params[:ratings]
+    end  
+end
 
   def new
     # default: render 'new' template
