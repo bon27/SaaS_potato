@@ -1,5 +1,5 @@
 Rottenpotatoes::Application.routes.draw do
-  match 'movies?item=:item&ratings[i]=i'=>'movies#index' 
+  match 'movies?(item=:item&)ratings[i]=i'=>'movies#index' 
   match 'movies?ratings[i]=i'=>'movies#index'
   #match 'movies/:item' => 'movies#index'
   # The priority is based upon order of creation:
