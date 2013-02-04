@@ -26,7 +26,7 @@ class MoviesController < ApplicationController
        end
     end
       
-    if params[:ratings].nil?&&params[:item].nil?
+    if params[:ratings].nil?&&params[:item].nil? && session[:ratings].present?
        redirect_to movies_path(:item=>session[:item],:ratings=>session[:ratings]) and return
     end
     
