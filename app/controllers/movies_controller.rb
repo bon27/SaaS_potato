@@ -86,8 +86,10 @@ end
     redirect_to movies_path
   end
   
-  def record_choice
-     @choice = session[:item]
-     pp @choice
+  def search_tmdb 
+  # hardwire to simulate failure
+     flash[:warning] = "'#{params[:search_terms]}' was not found in TMDb."
+     redirect_to movies_path and return
   end
+
 end
