@@ -11,8 +11,8 @@
     %h1.title Rotten Potatoes!
     #main
       - if flash[:notice]
-        #notice= flash[:notice]
+        = flash[:notice]
       - elsif flash[:warning]
-        #warning= flash[:warning]
+        = flash[:warning]
       
       = yield

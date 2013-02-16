@@ -88,8 +88,6 @@ end
   
   def search_tmdb 
   # hardwire to simulate failure
-     flash[:warning] = "'#{params[:search_terms]}' was not found in TMDb."
-     redirect_to movies_path and return
+     Movie.find_in_tmdb(params[:search_terms])
   end
-
-end
+ end

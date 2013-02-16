@@ -1,5 +1,4 @@
 source 'http://rubygems.org'
-
 gem 'rails', '3.1.0'
 
 # Bundle edge Rails instead:
@@ -44,6 +43,9 @@ group :test, :development do
   gem 'launchy'          # a useful debugging aid for user stories
 end
    
+group :test do
+  gem 'rspec-rails'
+end
 
 
 
