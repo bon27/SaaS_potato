@@ -2,7 +2,6 @@ Rottenpotatoes::Application.routes.draw do
   match 'movies?(item=:item&)ratings[i]=i'=>'movies#index' 
   match 'movies?ratings[i]=i'=>'movies#index'
   
-  post 'movies/search_tmdb'
   #match 'movies/:item' => 'movies#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -19,6 +18,7 @@ Rottenpotatoes::Application.routes.draw do
   #   resources :products
   resources :movies
   root :to => redirect("/movies")
+  post '/movies/search_tmdb'
   # Sample resource route with options:
   #   resources :products do
   #     member do

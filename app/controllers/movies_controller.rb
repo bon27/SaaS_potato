@@ -87,7 +87,6 @@ end
   end
   
   def search_tmdb 
-  # hardwire to simulate failure
-     Movie.find_in_tmdb(params[:search_terms])
+  #   Movie.find_in_tmdb(params[:search_terms])
   end
  end

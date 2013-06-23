@@ -8,10 +8,15 @@ gem 'rails', '3.1.0'
 group :development, :test do
   gem 'sqlite3'
   gem 'debugger'
+  gem 'database_cleaner'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'rspec-rails'
+  gem 'ZenTest'
 #  gem 'ruby-debug19', :require => 'ruby-debug'
 end
 group :production do
-  gem 'pg'
+# gem 'pg'
 end
 
 # Gems used only for assets and not required
@@ -35,16 +40,9 @@ gem 'jquery-rails'
 gem 'haml'
 
 
-group :test, :development do
-  gem 'cucumber-rails', :require=> false
-  gem 'cucumber-rails-training-wheels' # some pre-fabbed step definitions
-  gem 'database_cleaner' # to clear Cucumber's test database between runs
-  gem 'capybara'         # lets Cucumber pretend to be a web browser
-  gem 'launchy'          # a useful debugging aid for user stories
-end
-   
 group :test do
-  gem 'rspec-rails'
+  gem 'cucumber-rails-training-wheels' # some pre-fabbed step definitions
+  gem 'cucumber-rails'
 end
 
 
